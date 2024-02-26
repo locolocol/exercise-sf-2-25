@@ -1,0 +1,12 @@
+/*bu hepsine*/
+p{
+    /* @sldsValidatorIgnore */
+    font-size:medium;
+    color: blueviolet;
+}
+
+/* . ile costume oluyor */
+
+.main-div{
+    color:chocolate;
+}

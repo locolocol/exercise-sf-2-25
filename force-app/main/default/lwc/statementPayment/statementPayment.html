@@ -1,0 +1,60 @@
+<template>
+    <div class="slds-var-p-around_medium">
+        <lightning-card title={statementName}>
+            <div>
+                Statement Date: {statementDate}
+            </div>
+            <div>
+                Balance: {balance}
+            </div>
+        </lightning-card>
+
+        <lightning-card title="Quick Payment">
+            <div class="slds-var-p-around_medium">
+                <!-- LWC components for Quick Payment form -->
+                <!-- Input fields, buttons, and logic go here -->
+                <div class="slds-var-m-bottom_medium">
+                    <lightning-combobox
+                        name="paymentMethod"
+                        label="Payment Method"
+                        value={selectedPaymentMethod}
+                        options={paymentMethods}
+                        onchange={handlePaymentMethodChange}>
+                    </lightning-combobox>
+                </div>
+                <div if:true={showCheckFields}>
+                    <!-- Check payment fields -->
+                    <lightning-input label="Check Account Number" value={checkAccountNumber}></lightning-input>
+                    <lightning-input label="Check Routing Number" value={checkRoutingNumber}></lightning-input>
+                </div>
+                <div if:true={showCreditCardFields}>
+                    <!-- Credit card payment fields -->
+                    <lightning-input label="Credit Card Number" value={creditCardNumber}></lightning-input>
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col">
+                            <lightning-input label="Expiration Month" value={expirationMonth}></lightning-input>
+                        </div>
+                        <div class="slds-col">
+                            <lightning-combobox label="Expiration Year" value={expirationYear} options={expirationYears}></lightning-combobox>
+                        </div>
+                    </div>
+                    <lightning-input label="Security Code" value={securityCode} type="password"></lightning-input>
+                </div>
+                <div if:true={showAmountField}>
+                    <lightning-input label="Amount" value={amount}></lightning-input>
+                </div>
+                <div if:true={showBillingFields}>
+                    <!-- Billing information fields -->
+                    <lightning-input label="Billing Name" value={billingName}></lightning-input>
+                    <lightning-input label="Billing Street" value={billingStreet}></lightning-input>
+                    <lightning-input label="Billing City" value={billingCity}></lightning-input>
+                    <lightning-input label="Billing State" value={billingState}></lightning-input>
+                    <lightning-input label="Billing Postal Code" value={billingPostalCode}></lightning-input>
+                </div>
+                <div class="slds-var-m-top_medium">
+                    <lightning-button label="Save Payment" onclick={handleSavePayment} disabled={isSaveDisabled}></lightning-button>
+                </div>
+            </div>
+        </lightning-card>
+    </div>
+</template>

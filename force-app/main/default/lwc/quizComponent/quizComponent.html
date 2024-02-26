@@ -1,0 +1,27 @@
+<!-- quizComponent.html -->
+<template>
+    <lightning-card title="Welcome to LWC Quiz">
+        <template if:true={displayQuestions}>
+            <template for:each={questions} for:item="question">
+                <p key={question.id}>{question.text}</p>
+                <template for:each={question.choices} for:item="choice">
+                    <div key={choice}>
+                        <lightning-input
+                            type="checkbox"
+                            label={choice}
+                            value={choice}
+                            data-question-id={question.id}
+                            onchange={handleCheckboxChange}
+                        ></lightning-input>
+                    </div>
+                </template>
+            </template>
+              
+            <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
+        </template>
+        
+        <template if:true={displayResults}>
+            <p>Percentage: {percentage}%</p>
+        </template>
+    </lightning-card>
+</template>

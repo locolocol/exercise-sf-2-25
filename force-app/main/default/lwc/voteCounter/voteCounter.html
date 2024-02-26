@@ -1,0 +1,47 @@
+<template>
+    <lightning-card title="Vote for Your Favorite Soccer Team">
+        <div class="slds-var-m-around_medium">
+            <lightning-radio-group
+                name="radio-group"
+                label="Pick your favorite football team"
+                options={teamOptions}
+                value={selectedTeamValue}
+                onchange={handleSelection}
+            ></lightning-radio-group>
+
+            <!-- "Vote" button -->
+            <lightning-button
+                label="Vote"
+                onclick={submitVote}
+                variant="brand"
+                class="slds-var-m-top_small"
+                disabled={showResults}
+            ></lightning-button>
+
+            <!-- "Vote Again" button with margin -->
+            <lightning-button
+            onclick={voteAgain}
+            label="Vote Again"
+            class="slds-var-m-top_small slds-var-m-left_x-small"
+            variant="brand"
+            ></lightning-button>
+
+
+            <template if:true={showSurvey}>
+                <div>
+                    <h2>Survey Results</h2> 
+                    <template if:true={showResults}>
+                        <!-- Survey Results -->
+                        <div>Real Madrid: {realMadridVotes} votes ({roundedPercentage}%)</div>
+            <lightning-progress-bar value={roundedPercentage} variant="circular" size="medium"></lightning-progress-bar>
+
+                        <div>Barcelona: {barcelonaVotes} votes ({roundedPercentage}%)</div>
+                        <lightning-progress-bar value={calculatedBarcelonaPercentage} variant="circular" size="medium"></lightning-progress-bar>
+                        <div>Milan: {milanVotes} votes ({roundedPercentage}%)</div>
+                        <lightning-progress-bar value={calculatedMilanPercentage} variant="circular" size="medium"></lightning-progress-bar>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

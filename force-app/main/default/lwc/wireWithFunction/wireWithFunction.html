@@ -1,0 +1,18 @@
+<!-- wireWithFunction.html -->
+<template>
+    <lightning-card title="Account Information" icon-name="standard:account">
+        <div class="slds-var-m-around_small">
+            <template if:true={account}>
+                <div class="slds-var-m-around_small">
+                    <p> Account Name: {account.fields.Name.value}</p>
+                    <!-- Add more fields as needed -->
+                </div>
+            </template>
+            <template if:true={error}>
+                <div class="slds-var-m-around_small">
+                    <p>Error: {error.body.message}</p>
+                </div>
+            </template>
+        </div>
+    </lightning-card>
+</template>

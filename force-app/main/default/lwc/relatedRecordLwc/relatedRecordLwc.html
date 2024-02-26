@@ -1,0 +1,30 @@
+<template>
+    <lightning-card title="Display The related list Record base on AccountId" icon-name="custom:custom16">
+        <div style="overflow-x: auto;">
+        <table class="slds-table slds-table_bordered slds-table_col-bordered">
+            <!-- This is an HTML element that groups the header content in a table.-->
+            <thead>
+                <!--This is an HTML element that defines a row in a table.-->
+                <tr>
+                    <th style="width: 100px;"> Opportunity Id </th>
+                    <th style="width: 150px;"> Name </th>
+                    <th style="width: 120px;"> Close Date </th>
+                    <th style="width: 100px;"> Stage </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- This is a Lightning web component directive that iterates over the elements of the array -->
+                <template for:each={records.data} for:item="oppItem">
+                    <!--This is a table row for each Opportunity (oppItem) in the iteration. The key attribute is used to uniquely identify each row.-->
+                    <tr key={oppItem.Id}>
+                        <td>{oppItem.Id}</td>
+                        <td>{oppItem.Name}</td>
+                        <td>{oppItem.CloseDate}</td>
+                        <td>{oppItem.StageName}</td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+    </lightning-card>
+</template>

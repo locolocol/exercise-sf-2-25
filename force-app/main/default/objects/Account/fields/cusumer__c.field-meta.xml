@@ -1,0 +1,6 @@
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>NewTextField__c</fullName>
+    <label>New Text Field</label>
+    <length>255</length>
+    <type>Text</type>
+</CustomField>

@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="With Using Imperative Method"
+     icon-name="utility:user" class="slds-var-p-around_medium">
+        <lightning-button label="Get Account" onclick={handleClick}></lightning-button>
+
+        <!-- Check if accounts is defined before accessing data property -->
+        <template if:true={accounts}>
+            <div class="slds-var-m-around_medium">
+                <!-- Check if accounts.data is defined before iterating -->
+                <template if:true={accounts}>
+                    <template for:each={accounts} for:item="acc">
+                        <lightning-layout key={acc.Id} class="slds-var-m-vertical_x-small">
+                            <lightning-layout-item>{acc.Id} {acc.Name}</lightning-layout-item>
+                        </lightning-layout>
+                    </template>
+                </template>
+            </div>
+        </template>
+
+        <div class="slds-var-m-around_medium">{error}</div>
+    </lightning-card>
+</template>

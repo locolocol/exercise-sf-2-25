@@ -1,0 +1,25 @@
+<template>
+    <lightning-card title="Bind Imperative Method with Param" icon-name="utility:user">
+        <div class="slds-var-m-around_medium">
+            <lightning-input onchange={handlechange} label="Search Account" value={searchKey}></lightning-input>
+            <div class="slds-var-m-around_medium"></div>
+            <lightning-button label="Get Account" onclick={handleClick}></lightning-button>
+
+            <!-- Check if accounts is defined before accessing data property -->
+            <template if:true={accounts}>
+                <div class="slds-var-m-around_medium">
+                    <!-- Check if accounts.data is defined before iterating -->
+                    <template if:true={accounts}>
+                        <template for:each={accounts} for:item="acc">
+                            <lightning-layout key={acc.Id} class="slds-var-m-vertical_x-small">
+                                <lightning-layout-item>{acc.Id} {acc.Name}</lightning-layout-item>
+                            </lightning-layout>
+                        </template>
+                    </template>
+                </div>
+            </template>
+
+            <div class="slds-var-m-around_medium">{error}</div>
+        </div>
+    </lightning-card>
+</template>
